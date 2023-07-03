@@ -11,6 +11,8 @@ jobs:
         env:
           KEYCLOAK_USER: admin
           KEYCLOAK_PASSWORD: admin
+        volumes:
+          - openubl-realm.json:openubl-realm.json
     steps:
       - name: Keycloak Admin CLI
         uses: carlosthe19916/keycloak-action@0.4
