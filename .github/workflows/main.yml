@@ -20,4 +20,4 @@ jobs:
           server: http://keycloak:8080/auth # Use port 8080 instead of 8180
           username: admin
           password: admin
-          kcadm: create realms -f /config/realm.json
+          kcadm: create realms -f ./config/realm.json
