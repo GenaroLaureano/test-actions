@@ -1,19 +1,21 @@
-- name: Keycloak Admin CLI
-  # You may pin to the exact commit or the version.
-  # uses: carlosthe19916/keycloak-action@0457396e68f9207085e28c1b3c0b5bc571dc34a2
-  uses: carlosthe19916/keycloak-action@0.4
-  with:
-    # The server URL e.g. http://localhost:8080/auth
-    server: 
-    # The username to start a session.
-    username: 
-    # The password to start a session.
-    password: 
-    # The realm to start a session against to (default master).
-    realm: # optional, default is master
-    # The client to start a session against to (default admin-cli).
-    client: # optional, default is admin-cli
-    # Time to wait until server is available.
-    server-wait-timeout: # optional, default is 120
-    # The command to execute after authenticated in Keycloak e.g. update realms/rhamt -f rhamt-realm.json.
-    kcadm: 
+name: Example workflow for Keycloak Admin CLI
+on: [push]
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    services:
+      keycloak:
+        image: quay.io/keycloak/keycloak:12.0.1
+        ports:
+          - 8180:8080
+        env:
+          KEYCLOAK_USER: admin
+          KEYCLOAK_PASSWORD: admin
+    steps:
+      - name: Keycloak Admin CLI
+        uses: carlosthe19916/keycloak-action@0.4
+        with:
+          server: http://keycloak:8080/auth # Use port 8080 instead of 8180
+          username: admin
+          password: admin
+          kcadm: create realms -f openubl-realm.json
