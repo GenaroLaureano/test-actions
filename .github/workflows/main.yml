@@ -12,7 +12,7 @@ jobs:
           KEYCLOAK_USER: admin
           KEYCLOAK_PASSWORD: admin
         volumes:
-          - ./realm.json:/realm.json
+          - /realm.json:/realm.json
     steps:
       - name: Keycloak Admin CLI
         uses: carlosthe19916/keycloak-action@0.4
