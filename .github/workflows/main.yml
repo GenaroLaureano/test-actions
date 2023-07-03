@@ -12,7 +12,7 @@ jobs:
           KEYCLOAK_USER: admin
           KEYCLOAK_PASSWORD: admin
         volumes:
-          - openubl-realm.json:openubl-realm.json
+          - openubl-realm.json:./openubl-realm.json
     steps:
       - name: Keycloak Admin CLI
         uses: carlosthe19916/keycloak-action@0.4
@@ -20,4 +20,4 @@ jobs:
           server: http://keycloak:8080/auth # Use port 8080 instead of 8180
           username: admin
           password: admin
-          kcadm: create realms -f openubl-realm.json
+          kcadm: create realms -f ./openubl-realm.json
