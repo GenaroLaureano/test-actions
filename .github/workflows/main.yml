@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       keycloak:
-        image: quay.io/keycloak/keycloak:12.0.1
+        image: quay.io/keycloak/keycloak:latest
         ports:
           - 8180:8080
         env:
@@ -20,4 +20,4 @@ jobs:
           server: http://keycloak:8080/auth # Use port 8080 instead of 8180
           username: admin
           password: admin
-          kcadm: /opt/keycloak/bin/kc.sh start-dev
+          kcadm: start-dev
